@@ -3,6 +3,8 @@ package ge.faketorch;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 public class TorchActivity extends AppCompatActivity {
@@ -16,7 +18,19 @@ public class TorchActivity extends AppCompatActivity {
         onButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                viewDissapear(view);
+            }
+        });
+    }
+    private void viewDissapear(final View view) {
+        Animation alphaAnim = new AlphaAnimation(1f, 0f);
+        alphaAnim.setDuration(300);
 
+        view.startAnimation(alphaAnim);
+        view.postOnAnimation(new Runnable() {
+            @Override
+            public void run() {
+                view.setVisibility(View.GONE);
             }
         });
     }

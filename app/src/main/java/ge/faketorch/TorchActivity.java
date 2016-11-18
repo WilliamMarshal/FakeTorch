@@ -54,6 +54,7 @@ public class TorchActivity extends AppCompatActivity {
                 mTimerLabel.setText(counter + "");
                 if (counter == 0) {
                     mTimerLabel.setVisibility(View.GONE);
+                    dimScreen();
                     Terminator.terminate(this);
                 }
                 counter--;
@@ -64,5 +65,9 @@ public class TorchActivity extends AppCompatActivity {
 
             }
         }.start();
+    }
+
+    private void dimScreen() {
+        mContainer.setBackgroundColor(Color.BLACK);
     }
 }

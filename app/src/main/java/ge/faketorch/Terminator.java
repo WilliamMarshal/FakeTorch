@@ -11,7 +11,9 @@ public class Terminator {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                timer.cancel();
+                synchronized (timer) {
+                    timer.cancel();
+                }
             }
         }).start();
     }
